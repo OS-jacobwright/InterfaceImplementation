@@ -1,2 +1,3 @@
-/bin/*
-/obj/*
+InterfaceImplementation/bin/*
+InterfaceImplementation/obj/*
+.vs/*

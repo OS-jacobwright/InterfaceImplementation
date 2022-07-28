@@ -6,6 +6,5 @@ using System.Threading.Tasks;
 
 namespace InterfaceImplementation {
     public interface INeoApp : IOMLComponent {
-        new bool Is<T>();
     }
 }

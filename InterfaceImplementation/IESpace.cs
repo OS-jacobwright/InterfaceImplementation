@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace InterfaceImplementation {
-    public interface IESpace {
-        bool Is<T>();
+    public interface IESpace : IOMLComponent {
         string HelloWorld();
     }
 }

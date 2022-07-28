@@ -5,9 +5,9 @@ namespace InterfaceImplementation
     internal class Program {
         static void Main(string[] args) {
             Console.WriteLine("Hello World!");
-            IESpace e = new ESpace();
-            INeoApp neoApp = (INeoApp) GetNew();
-            INeoLibrary neoLibrary = (INeoLibrary) GetNew();
+            IESpace e = ESpace.Create<IESpace>();
+            INeoApp neoApp = ESpace.Create<INeoApp>();
+            INeoLibrary neoLibrary = ESpace.Create<INeoLibrary>();
 
             if (neoApp is INeoLibrary) {
                 Console.WriteLine("We know this doesn't work.");
@@ -38,8 +38,7 @@ namespace InterfaceImplementation
             }
 
             Console.WriteLine("Time to guess!");
-            // TODO: The following does not work. We need to be able to determine if we have an INeoApp or an INeoLibrary without knowing beforehand
-            IESpace guess = Mystery(1);
+            var guess = Mystery(1);
             if(guess.Is<INeoApp>()) {
                 Console.WriteLine("We are an INeoApp!");
             }
@@ -50,16 +49,12 @@ namespace InterfaceImplementation
             Console.WriteLine("Our test is over.");
         }
 
-        public static IESpace GetNew() {
-            return (IESpace)(new ESpace());
-        }
-
-        public static IESpace Mystery(int var) {
+        public static IOMLComponent Mystery(int var) {
             switch(var) {
-                case 1: return ((INeoApp)new ESpace());
-                case 2: return ((INeoLibrary)new ESpace());
+                case 1: return ESpace.Create<INeoApp>();
+                case 2: return ESpace.Create<IOMLComponent>();
                 default: 
-            return new ESpace();
+            return ESpace.Create<IESpace>();
             }
         }
     }

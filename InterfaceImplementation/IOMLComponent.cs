@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace InterfaceImplementation {
-    public interface IOMLComponent : IESpace {
-        new bool Is<T>();
+    public interface IOMLComponent {
+        bool Is<T>();
     }
 }
